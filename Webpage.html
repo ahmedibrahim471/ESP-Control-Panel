@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>ESP Control Panel</title>
+    <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-3.6.0.min.js"></script>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        text-align: center;
+        background-color: black;
+      }
+
+      h1 {
+        font-size: 48px;
+        text-align: left;
+        margin: 0;
+        padding-top: 20px;
+        padding-left: 20px;
+        color: white;
+        font-style: italic;
+      }
+
+      hr {
+        height: 3px;
+        border: none;
+        background-color: blue;
+        margin-top: 0;
+      }
+
+      .btn-group {
+        margin-top: 100px;
+      }
+
+      .btn {
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        padding: 20px 40px;
+        text-align: center;
+        font-size: 24px;
+        margin: 4px 8px;
+        cursor: pointer;
+      }
+
+      .btn:first-child {
+        margin-right: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1><em>ESP CONTROL PANEL</em></h1>
+    <hr>
+    <div class="btn-group">
+      <button class="btn" onclick="sendCommand('lights')">Lights</button>
+      <button class="btn" onclick="sendCommand('motor')">Motor</button>
+    </div>
+    <script>
+      function sendCommand(command) {
+  var url = "http://192.168.1.4/" + command;
+  $.get(url, function(data, status) {
+    console.log("Response: " + data);
+  });
+}
+    </script>
+  </body>
+</html>
